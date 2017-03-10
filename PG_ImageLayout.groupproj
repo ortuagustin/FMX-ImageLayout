@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{2EFE9ECF-7786-4195-ACE1-654E2AF81A79}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="ImageLayout.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demo\ImageLayoutDemo.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ImageLayout">
+        <MSBuild Projects="ImageLayout.dproj"/>
+    </Target>
+    <Target Name="ImageLayout:Clean">
+        <MSBuild Projects="ImageLayout.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ImageLayout:Make">
+        <MSBuild Projects="ImageLayout.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ImageLayoutDemo">
+        <MSBuild Projects="Demo\ImageLayoutDemo.dproj"/>
+    </Target>
+    <Target Name="ImageLayoutDemo:Clean">
+        <MSBuild Projects="Demo\ImageLayoutDemo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ImageLayoutDemo:Make">
+        <MSBuild Projects="Demo\ImageLayoutDemo.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ImageLayout;ImageLayoutDemo"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ImageLayout:Clean;ImageLayoutDemo:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ImageLayout:Make;ImageLayoutDemo:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

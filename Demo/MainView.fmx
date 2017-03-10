@@ -1,0 +1,273 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 480
+  ClientWidth = 471
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object ToolBar1: TToolBar
+    Size.Width = 471.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    object btnDrawerView: TButton
+      Align = Left
+      Size.Width = 48.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'detailstoolbutton'
+      TabOrder = 2
+      Text = 'btnDrawerView'
+      Visible = False
+    end
+    object btnClearImage: TSpeedButton
+      Action = ClearImageAction
+      Align = MostRight
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 423.000000000000000000
+      Size.Width = 48.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'deletetoolbutton'
+      Text = 'Clear'
+      Visible = True
+    end
+    object btnPictureFromMediaCamera: TButton
+      Action = TakePhotoFromCameraAction
+      Align = Right
+      Enabled = True
+      ImageIndex = -1
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 5.000000000000000000
+      Margins.Right = 5.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Position.X = 312.000000000000000000
+      Position.Y = 5.000000000000000000
+      Size.Width = 48.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'cameratoolbutton'
+      TabOrder = 0
+      TabStop = False
+      Visible = True
+    end
+    object btnPictureFromMediaLibrary: TButton
+      Action = TakePhotoFromLibraryAction
+      Align = Right
+      Enabled = True
+      ImageIndex = -1
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 5.000000000000000000
+      Margins.Right = 5.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Position.X = 370.000000000000000000
+      Position.Y = 5.000000000000000000
+      Size.Width = 48.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'composetoolbutton'
+      TabOrder = 1
+      TabStop = False
+      Visible = True
+    end
+  end
+  object ImageLayout1: TImageLayout
+    Touch.InteractiveGestures = [Zoom, Pan]
+    Align = Client
+    MouseWheelZoom = True
+    AnimateDecelerationRate = True
+    AutoHideScrollbars = True
+    BounceAnimation = True
+    BounceElasticity = 100.000000000000000000
+    ImageScale = 20.000000000000000000
+  end
+  object MultiView1: TMultiView
+    MasterButton = btnDrawerView
+    Mode = Panel
+    Size.Width = 290.000000000000000000
+    Size.Height = 432.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object ListBox1: TListBox
+      Align = Client
+      Size.Width = 289.000000000000000000
+      Size.Height = 432.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      DisableFocusEffect = True
+      ItemHeight = 35.000000000000000000
+      DefaultItemStyles.ItemStyle = ''
+      DefaultItemStyles.GroupHeaderStyle = ''
+      DefaultItemStyles.GroupFooterStyle = ''
+      Viewport.Width = 285.000000000000000000
+      Viewport.Height = 428.000000000000000000
+      object ListBoxItem1: TListBoxItem
+        Size.Width = 285.000000000000000000
+        Size.Height = 35.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Text = 'Bounce Animation'
+        object swBounceAnimation: TSwitch
+          Align = Right
+          IsChecked = True
+          Margins.Top = 5.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 5.000000000000000000
+          Position.X = 231.000000000000000000
+          Position.Y = 5.000000000000000000
+          Size.Width = 44.000000000000000000
+          Size.Height = 25.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          OnSwitch = swBounceAnimationSwitch
+        end
+      end
+      object ListBoxItem5: TListBoxItem
+        Position.Y = 35.000000000000000000
+        Size.Width = 285.000000000000000000
+        Size.Height = 35.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 4
+        Text = 'Bounce Elasticity'
+        object edBounceElasticity: TNumberBox
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Right
+          TabOrder = 0
+          Cursor = crIBeam
+          Value = 100.000000000000000000
+          ValueType = Float
+          Position.X = 207.000000000000000000
+          Position.Y = 5.000000000000000000
+          Margins.Top = 5.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 5.000000000000000000
+          Size.Width = 68.000000000000000000
+          Size.Height = 25.000000000000000000
+          Size.PlatformDefault = False
+          OnChange = edBounceElasticityChange
+        end
+      end
+      object ListBoxItem2: TListBoxItem
+        Position.Y = 70.000000000000000000
+        Size.Width = 285.000000000000000000
+        Size.Height = 35.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Text = 'Autohide Scrollbars'
+        object swAutoHideScrollbars: TSwitch
+          Align = Right
+          IsChecked = True
+          Margins.Top = 5.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 5.000000000000000000
+          Position.X = 231.000000000000000000
+          Position.Y = 5.000000000000000000
+          Size.Width = 44.000000000000000000
+          Size.Height = 25.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          OnSwitch = swAutoHideScrollbarsSwitch
+        end
+      end
+      object ListBoxItem3: TListBoxItem
+        Position.Y = 105.000000000000000000
+        Size.Width = 285.000000000000000000
+        Size.Height = 35.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        Text = 'Animate Deceleretion Rate'
+        object swAnimateDecelerationRate: TSwitch
+          Align = Right
+          IsChecked = True
+          Margins.Top = 5.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 5.000000000000000000
+          Position.X = 231.000000000000000000
+          Position.Y = 5.000000000000000000
+          Size.Width = 44.000000000000000000
+          Size.Height = 25.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          OnSwitch = swAnimateDecelerationRateSwitch
+        end
+      end
+      object ListBoxItem4: TListBoxItem
+        Position.Y = 140.000000000000000000
+        Size.Width = 285.000000000000000000
+        Size.Height = 35.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 3
+        Text = 'MouseWheel Zoom'
+        object swMouseWheelZoom: TSwitch
+          Align = Right
+          IsChecked = True
+          Margins.Top = 5.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 5.000000000000000000
+          Position.X = 231.000000000000000000
+          Position.Y = 5.000000000000000000
+          Size.Width = 44.000000000000000000
+          Size.Height = 25.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          OnSwitch = swMouseWheelZoomSwitch
+        end
+      end
+      object ListBoxItem6: TListBoxItem
+        Position.Y = 175.000000000000000000
+        Size.Width = 285.000000000000000000
+        Size.Height = 35.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 5
+        Text = 'ImageScale'
+        object edImageScale: TNumberBox
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Right
+          TabOrder = 0
+          Cursor = crIBeam
+          Min = 0.009999999776482582
+          Max = 20.000000000000000000
+          Value = 1.000000000000000000
+          ValueType = Float
+          Position.X = 207.000000000000000000
+          Position.Y = 5.000000000000000000
+          VertIncrement = 0.050000000745058060
+          Margins.Top = 5.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 5.000000000000000000
+          Size.Width = 68.000000000000000000
+          Size.Height = 25.000000000000000000
+          Size.PlatformDefault = False
+          OnChange = edImageScaleChange
+        end
+      end
+    end
+  end
+  object ActionList1: TActionList
+    Left = 384
+    Top = 214
+    object OpenImageAction: TAction
+      Category = 'Media Library'
+      Text = 'OpenImageAction'
+      OnExecute = OpenImageActionExecute
+    end
+    object ClearImageAction: TAction
+      Category = 'Media Library'
+      Text = 'ClearImageAction'
+      OnExecute = ClearImageActionExecute
+    end
+    object TakePhotoFromLibraryAction: TTakePhotoFromLibraryAction
+      Category = 'Media Library'
+      OnDidFinishTaking = TakePhotoFromLibraryActionDidFinishTaking
+    end
+    object TakePhotoFromCameraAction: TTakePhotoFromCameraAction
+      Category = 'Media Library'
+      OnDidFinishTaking = TakePhotoFromCameraActionDidFinishTaking
+    end
+  end
+end
