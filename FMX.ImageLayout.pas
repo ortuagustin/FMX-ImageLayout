@@ -217,9 +217,12 @@ end;
 
 procedure TCustomImageLayout.DoGesture(const EventInfo: TGestureEventInfo; var Handled: Boolean);
 begin
+  Handled := True;
   case EventInfo.GestureID of
     igiPan: HandlePan(EventInfo);
     igiZoom: HandleZoom(EventInfo);
+  else
+    inherited DoGesture(EventInfo, Handled);
   end;
 end;
 
