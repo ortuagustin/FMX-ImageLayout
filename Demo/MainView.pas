@@ -49,7 +49,8 @@ type
     TakePhotoFromCameraAction: TTakePhotoFromCameraAction;
     btnPictureFromMediaCamera: TButton;
     btnPictureFromMediaLibrary: TButton;
-    procedure ImageLayout1ImageChanged(Sender: TObject);
+    WhenImageChanged: TListBoxItem;
+    cbImageChangeAction: TComboBox;
     procedure FormCreate(Sender: TObject);
     procedure edBounceElasticityChange(Sender: TObject);
     procedure swBounceAnimationSwitch(Sender: TObject);
@@ -61,6 +62,7 @@ type
     procedure ClearImageActionExecute(Sender: TObject);
     procedure TakePhotoFromLibraryActionDidFinishTaking(Image: TBitmap);
     procedure TakePhotoFromCameraActionDidFinishTaking(Image: TBitmap);
+    procedure ImageLayout1ImageChanged(Sender: TObject; const Reason: TImageChangeReason; var Action: TImageChangeAction);
   end;
 
 var
@@ -90,19 +92,23 @@ begin
   MultiView1.Mode := TMultiViewMode.Drawer;
 end;
 
-procedure TForm1.edImageScaleChange(Sender: TObject);
-begin
-  ImageLayout1.ImageScale := edImageScale.Value;
-end;
-
-procedure TForm1.ImageLayout1ImageChanged(Sender: TObject);
+procedure TForm1.ImageLayout1ImageChanged(Sender: TObject; const Reason: TImageChangeReason; var Action: TImageChangeAction);
 begin
   edImageScale.OnChange := nil;
   try
     edImageScale.Value := ImageLayout1.ImageScale;
+    if Reason = TImageChangeReason.LayoutResized then
+      Action := TImageChangeAction.RecalcBestFit
+    else
+      Action := TImageChangeAction(cbImageChangeAction.ItemIndex);
   finally
     edImageScale.OnChange := edImageScaleChange;
   end;
+end;
+
+procedure TForm1.edImageScaleChange(Sender: TObject);
+begin
+  ImageLayout1.ImageScale := edImageScale.Value;
 end;
 
 procedure TForm1.OpenImageActionExecute(Sender: TObject);

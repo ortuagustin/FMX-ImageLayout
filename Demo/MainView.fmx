@@ -84,7 +84,8 @@ object Form1: TForm1
     AutoHideScrollbars = True
     BounceAnimation = True
     BounceElasticity = 100.000000000000000000
-    ImageScale = 20.000000000000000000
+    ImageScale = 1.000000000000000000
+    OnImageChanged = ImageLayout1ImageChanged
   end
   object MultiView1: TMultiView
     MasterButton = btnDrawerView
@@ -223,7 +224,7 @@ object Form1: TForm1
         Size.Width = 285.000000000000000000
         Size.Height = 35.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 5
+        TabOrder = 6
         Text = 'ImageScale'
         object edImageScale: TNumberBox
           Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -244,6 +245,31 @@ object Form1: TForm1
           Size.Height = 25.000000000000000000
           Size.PlatformDefault = False
           OnChange = edImageScaleChange
+        end
+      end
+      object WhenImageChanged: TListBoxItem
+        Position.Y = 210.000000000000000000
+        Size.Width = 285.000000000000000000
+        Size.Height = 35.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 5
+        Text = 'When Image Changed:'
+        object cbImageChangeAction: TComboBox
+          Align = Right
+          Items.Strings = (
+            'RecalcBestFit'
+            'PreserveImageScale')
+          ItemIndex = 0
+          Margins.Left = 5.000000000000000000
+          Margins.Top = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Margins.Bottom = 5.000000000000000000
+          Position.X = 180.000000000000000000
+          Position.Y = 5.000000000000000000
+          Size.Width = 100.000000000000000000
+          Size.Height = 25.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
         end
       end
     end
