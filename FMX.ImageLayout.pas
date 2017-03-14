@@ -14,7 +14,6 @@ uses
 
 type
 { TODO -cTImageLayout : DoubleTap Gesture isn't recognized by FMX }
-{ TODO -cTImageLayout : Make Zoom Gesture "Faster" }
 { TODO -cTImageLayout : Implement Zoom Gesture "Direction", that is, zoom to the point where
                         the gesture is located }
 
@@ -345,7 +344,7 @@ begin
   if not((TInteractiveGestureFlag.gfBegin in EventInfo.Flags) or
          (TInteractiveGestureFlag.gfEnd in EventInfo.Flags)) then
   begin
-    S := ((EventInfo.Distance - PriorZoomDistance) * ImageScale) / PointF(Width, Height).Length;
+    S := ((EventInfo.Distance - PriorZoomDistance) * ImageScale) / (PointF(Width, Height).Length * 0.35);
     PriorZoomDistance := EventInfo.Distance;
     ImageScale := ImageScale + S;
     Handled := True;
